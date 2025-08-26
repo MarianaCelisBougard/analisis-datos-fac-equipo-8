@@ -1,0 +1,32 @@
+# Demografía básica
+_Actualizado: 2025-08-25 12:16_
+
+## Resumen general
+- Total de registros: **6423**
+- Total de columnas: **231**
+- Edad promedio: **36.7**  | mín **18**, máx **69**
+
+## Preguntas y respuestas
+1. **¿Cuál es el rango de edad más común?**  
+**25-34**
+
+2. **¿Hay diferencias en la distribución por género?**
+```
+ Cantidad
+     4451
+     1955
+       15
+        2
+```
+
+3. **¿Cuál es el grado militar más frecuente?**
+**NO RESPONDE**
+
+## Visualizaciones
+![Histograma de edades](figs/demografia_hist_edades.png)
+
+
+![Edad promedio por género](figs/demografia_edad_prom_por_genero.png)
+
+
+![Top grados](figs/demografia_top_grados.png)
