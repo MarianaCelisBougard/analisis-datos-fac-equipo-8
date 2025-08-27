@@ -1,4 +1,4 @@
-#  Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar
+a#  Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar
 
 ##  Objetivo del Proyecto
 Realizar un análisis básico de datos reales de una encuesta de bienestar familiar del personal de la Fuerza Aérea Colombiana (FAC), aplicando herramientas de *Python* y buenas prácticas de trabajo colaborativo en *Git/GitHub*.  
@@ -23,26 +23,20 @@ El análisis se desarrolló en tres etapas principales:
 
 ##  Estructura del Repositorio
 
-
+```text
 analisis-datos-fac-equipo-8/
-│── README.md                → Descripción del proyecto
-│── datos\_exploracion.py     → Código principal con funciones de análisis y generación de reportes
-│── resultados\_analisis.md   → Resumen ejecutivo del análisis
-│── requirements.txt         → Dependencias del proyecto
-│
-├── datos/
-│   └── JEFAB\_2024.xlsx      → Base de datos original
-│
-├── reportes/
-│   ├── calidad\_datos.md     → Reporte de calidad de datos
-│   ├── demografia\_basica.md → Reporte de análisis demográfico
-│   ├── analisis\_familiar.md → Reporte de análisis familiar
-│   └── figs/                → Imágenes generadas para visualizaciones
-
-`
-
----
-
+├─ README.md                       → Descripción del proyecto
+├─ datos_exploracion.py            → Código principal con funciones de análisis y generación de reportes
+├─ resultados_analisis.md          → Resumen ejecutivo del análisis
+├─ requirements.txt                → Dependencias del proyecto
+├─ datos/
+│  └─ JEFAB_2024.xlsx              → Base de datos original
+└─ reportes/
+   ├─ calidad_datos.md             → Reporte de calidad de datos
+   ├─ demografia_basica.md         → Reporte de análisis demográfico
+   ├─ analisis_familiar.md         → Reporte de análisis familiar
+   └─ figs/                        → Imágenes generadas para visualizaciones
+```
 ## 🚀 Ejecución del Proyecto (sin Streamlit)
 
 ### 1. Requisitos
