@@ -14,10 +14,10 @@ El análisis se desarrolló en tres etapas principales:
 
 - *Mariana Celis*  
   - Rol de Estudiante A: Especialista en datos familiares.  
-  - Rol de Estudiante C: Experta en calidad de datos.  
+  - Rol de Estudiante B: Experta en calidad de datos.  
 
 - *Vanessa Cortés*  
-  - Rol de Estudiante B: Líder de análisis demográfico. 
+  - Rol de Estudiante C: Líder de análisis demográfico. 
 
 ---
 
@@ -85,4 +85,3 @@ Proyecto realizado por:
 
 *Grupo 8 – Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar*
 
-```
