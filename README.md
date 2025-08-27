@@ -1,4 +1,5 @@
 
+
 ```markdown
 #  Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar
 
@@ -25,7 +26,7 @@ Esto garantiza que los resultados se basen en información coherente y depurada.
 
 ---
 
-## Organización del Equipo (Grupo 8)
+## 👥 Organización del Equipo (Grupo 8)
 
 - **Mariana Celis**  
   - Rol de *Estudiante A*: Líder de análisis demográfico.  
@@ -112,3 +113,4 @@ Proyecto realizado por:
 * **Vanessa Cortés** (Análisis Familiar)
 
 **Grupo 8 – Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar**
+

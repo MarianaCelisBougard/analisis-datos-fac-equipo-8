@@ -1,6 +1,6 @@
 # Calidad de Datos (con limpieza aplicada)
 
-_Actualizado: 2025-08-27 17:29_
+_Actualizado: 2025-08-27 17:36_
 
 
 
