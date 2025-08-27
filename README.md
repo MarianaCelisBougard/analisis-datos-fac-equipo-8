@@ -1,6 +1,4 @@
 
-
-```markdown
 #  Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar
 
 ##  Objetivo del Proyecto
