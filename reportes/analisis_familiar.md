@@ -10,7 +10,8 @@ _Actualizado: 2025-08-27 13:42_
 - Viven con familia/hijos: **1185**
 
 3. **¿Hay relación entre edad y estado civil?**
-La comparación de distribuciones (boxplot) y las medias por grupo permiten evaluar diferencias de edad entre estados civiles.
+
+Sí. Los resultados muestran que los **solteros presentan edades más bajas**, mientras que los **casados tienen una edad promedio intermedia**. En contraste, los **divorciados y viudos concentran edades mayores**. Esto indica una relación evidente: a mayor edad, es más probable que el estado civil cambie de soltero a casado, separado o viudo.
 
 ## Visualizaciones
 ![Estado civil](figs/familiar_estado_civil.png)
