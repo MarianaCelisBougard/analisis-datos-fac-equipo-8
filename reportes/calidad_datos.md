@@ -1,12 +1,24 @@
-# Calidad de Datos
+# Calidad de Datos (con limpieza aplicada)
 
-_Actualizado: 2025-08-25 12:16_
+_Actualizado: 2025-08-27 17:29_
 
 
 
-## Preguntas y respuestas
+## Limpieza aplicada
 
-1. **¿Qué columnas tienen más datos faltantes?**
+- **Nombres de columnas** normalizados (se corrigieron caracteres extraños y espacios).
+
+- **Duplicados eliminados:** 0
+
+- **Imputación de edades faltantes** con la media en `EDAD2` (**37** años).
+
+- **Género** y **estado civil** convertidos a mayúsculas y estandarizados.
+
+- **Dataset limpio** guardado en: `reportes/datos_limpios.xlsx`
+
+
+
+## Datos faltantes después de limpieza
 
 ```
                               Columna  Datos_Faltantes  Porcentaje
@@ -18,20 +30,9 @@ NUMERO_PERSONAS_APORTE_SOSTENIMIENTO2             3928       61.16
                            EDAD_PADRE             1939       30.19
                      EDAD_RANGO_MADRE              889       13.84
                            EDAD_MADRE              885       13.78
-                                EDAD2               13        0.20
                            EDAD_RANGO               13        0.20
+                               CUERPO                0        0.00
 ```
-
-
-
-2. **¿Hay registros duplicados?**  
-**0** registros duplicados.
-
-
-
-3. **¿Qué problemas de encoding se detectan?**
-
-No se detectaron patrones típicos de mal encoding (por ejemplo `Ã`, `â`).
 
 
 

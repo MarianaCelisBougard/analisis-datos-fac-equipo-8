@@ -1,5 +1,6 @@
 # Demografía básica
-_Actualizado: 2025-08-25 12:16_
+_Actualizado: 2025-08-27 17:29_
+_Fuente de datos: `reportes/datos_limpios.xlsx`_
 
 ## Resumen general
 - Total de registros: **6423**
