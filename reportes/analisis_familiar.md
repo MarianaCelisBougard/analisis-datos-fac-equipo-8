@@ -1,5 +1,5 @@
 # Análisis familiar
-_Actualizado: 2025-08-25 12:16_
+_Actualizado: 2025-08-27 13:42_
 
 ## Preguntas y respuestas
 1. **¿Qué porcentaje del personal está casado?**  
