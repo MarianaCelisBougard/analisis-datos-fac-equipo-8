@@ -43,7 +43,7 @@ analisis-datos-fac-equipo-8/
 
 ---
 
-## 🚀 Ejecución del Proyecto (sin Streamlit)
+##  Ejecución del Proyecto
 
 ### 1. Requisitos
 Instalar dependencias en un entorno de Python 3:
