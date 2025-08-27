@@ -23,8 +23,7 @@ El análisis se desarrolló en tres etapas principales:
 
 ##  Estructura del Repositorio
 
-
-text
+```text
 analisis-datos-fac-equipo-8/
 ├─ README.md                       → Descripción del proyecto
 ├─ datos_exploracion.py            → Código principal con funciones de análisis y generación de reportes
@@ -37,10 +36,7 @@ analisis-datos-fac-equipo-8/
    ├─ demografia_basica.md         → Reporte de análisis demográfico
    ├─ analisis_familiar.md         → Reporte de análisis familiar
    └─ figs/                        → Imágenes generadas para visualizaciones
-
-`
-
----
+```
 
 ##  Ejecución del Proyecto
 
