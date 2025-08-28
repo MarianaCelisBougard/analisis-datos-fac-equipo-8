@@ -29,7 +29,7 @@ Esto garantiza que los resultados se basen en información coherente y depurada.
 - **Mariana Celis**  
   - Rol de *Estudiante A*: Líder de análisis demográfico.
     
--**Mariana Celis** y **Vanessa Cortés** 
+- **Mariana Celis** y **Vanessa Cortés** 
   - Rol de *Estudiante C*: Encargada de calidad y limpieza de datos.  
 
 - **Vanessa Cortés**  
