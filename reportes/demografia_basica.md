@@ -13,11 +13,13 @@ _Fuente de datos: `reportes/datos_limpios.xlsx`_
 
 2. **¿Hay diferencias en la distribución por género?**
 ```
- Cantidad
-     4451
-     1955
-       15
-        2
+| Género    | Cantidad |
+|-----------|----------|
+| MASCULINO | 4451     |
+| FEMENINO  | 1955     |
+| SIN DATO  | 15       |
+| OTRO      | 2        |
+
 ```
 
 3. **¿Cuál es el grado militar más frecuente?**
