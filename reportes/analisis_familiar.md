@@ -29,8 +29,8 @@ Sí. Los resultados muestran que los **solteros presentan edades más bajas**, m
   2084 30.233685    28.0
 ```
 
-## Nueva sección: Cruces y métricas familiares
-- Esta sección agrega cruces entre **estado civil y género**, así como **indicadores de hijos**.
+## Cruces y métricas familiares
+- Esta sección se agrego cruces entre **estado civil y género**, así como **indicadores de hijos**.
 
 ### Estado civil × Género (porcentaje por estado civil)
 ```
