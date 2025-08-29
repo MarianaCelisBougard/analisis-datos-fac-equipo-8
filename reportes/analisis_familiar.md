@@ -1,5 +1,5 @@
 # Análisis familiar
-_Actualizado: 2025-08-29 10:39_
+_Actualizado: 2025-08-29 10:48_
 _Fuente de datos: `reportes/datos_limpios.xlsx`_
 
 ## Preguntas y respuestas
@@ -27,4 +27,41 @@ Sí. Los resultados muestran que los **solteros presentan edades más bajas**, m
    250 40.352000    39.0
   3889 39.681666    38.0
   2084 30.233685    28.0
+```
+
+## Nueva sección: Cruces y métricas familiares
+- Esta sección agrega cruces entre **estado civil y género**, así como **indicadores de hijos**.
+
+### Estado civil × Género (porcentaje por estado civil)
+```
+Estado civil  FEMENINO  MASCULINO  NO BINARIO  OTRO
+      CASADO     25.64      74.03        0.05  0.28
+  DIVORCIADO     43.60      56.40        0.00  0.00
+    SEPARADO     44.10      55.28        0.00  0.62
+   SOLTERO/A     35.84      64.01        0.00  0.14
+     VIUDO/A     79.49      20.51        0.00  0.00
+```
+
+
+![Estado civil por género (%)](figs/familiar_estado_civil_por_genero_pct.png)
+
+### Hijos por estado civil
+```
+Estado civil  pct_con_hijos
+      CASADO          76.91
+  DIVORCIADO          77.60
+    SEPARADO          88.20
+   SOLTERO/A          14.68
+     VIUDO/A          92.31
+```
+
+
+### Convivencia (entre quienes tienen hijos)
+```
+Estado civil  Pct convive con familia (entre quienes tienen hijos)
+      CASADO                                                 12.34
+  DIVORCIADO                                                 21.13
+    SEPARADO                                                 26.76
+   SOLTERO/A                                                 31.37
+     VIUDO/A                                                 13.89
 ```
