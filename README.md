@@ -27,7 +27,9 @@ Esto garantiza que los resultados se basen en información coherente y depurada.
 ## 👥 Organización del Equipo (Grupo 8)
 
 - **Mariana Celis**  
-  - Rol de *Estudiante A*: Líder de análisis demográfico.  
+  - Rol de *Estudiante A*: Líder de análisis demográfico.
+    
+- **Mariana Celis** y **Vanessa Cortés** 
   - Rol de *Estudiante C*: Encargada de calidad y limpieza de datos.  
 
 - **Vanessa Cortés**  
@@ -111,4 +113,3 @@ Proyecto realizado por:
 * **Vanessa Cortés** (Análisis Familiar)
 
 **Grupo 8 – Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar**
-

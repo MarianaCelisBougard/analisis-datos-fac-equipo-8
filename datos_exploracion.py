@@ -288,17 +288,18 @@ def run_demografia(save_md: bool = True) -> dict:
     }
 
 # ---------------------------------------------------------------------
-# PASO 3: FAMILIAR (usa dataset limpio si existe)
+# PASO 3: FAMILIAR (usa dataset limpio si existe) + NUEVA SECCIÓN
 # ---------------------------------------------------------------------
 def run_familiar(save_md: bool = True) -> dict:
     _ensure_dirs()
     data_path = _prefer_clean_path()
     df = pd.read_excel(data_path)
 
-    edad_col  = _find_col(df, ["EDAD2", "EDAD", "Edad"])
-    ec_col    = _find_col(df, ["ESTADO_CIVIL", "Estado civil", "ESTADOCIVIL"])
-    hijos_col = _find_col(df, ["HIJOS", "NUM_HIJOS", "N_HIJOS", "# HIJOS", "TIENE_HIJOS"])
-    conv_col  = _find_col(df, ["HABITA_VIVIENDA_FAMILIAR", "VIVE_CON_FAMILIA", "VIVE_CON_HIJOS", "CONVIVE_FAMILIA"])
+    edad_col   = _find_col(df, ["EDAD2", "EDAD", "Edad"])
+    ec_col     = _find_col(df, ["ESTADO_CIVIL", "Estado civil", "ESTADOCIVIL"])
+    hijos_col  = _find_col(df, ["HIJOS", "NUM_HIJOS", "N_HIJOS", "# HIJOS", "TIENE_HIJOS"])
+    conv_col   = _find_col(df, ["HABITA_VIVIENDA_FAMILIAR", "VIVE_CON_FAMILIA", "VIVE_CON_HIJOS", "CONVIVE_FAMILIA"])
+    genero_col = _find_col(df, ["GENERO", "GÉNERO", "SEXO", "Sexo", "Genero"])
 
     if ec_col is None:
         raise ValueError("No se encontró columna de estado civil (ESTADO_CIVIL).")
@@ -312,22 +313,28 @@ def run_familiar(save_md: bool = True) -> dict:
     es_casado = ec_norm.isin({"CASADO", "CASADOS", "CASADA", "MATRIMONIO", "CASAD@"})
     pct_casados = round(100 * es_casado.mean(), 2)
 
-    # hijos
+    # hijos (boolean y numérico si aplica)
+    tiene_hijos = None
     total_tiene_hijos = None
+    hijos_num = None
     if hijos_col:
         if pd.api.types.is_numeric_dtype(df[hijos_col]):
-            tiene_hijos = (df[hijos_col].fillna(0) > 0)
+            hijos_num = pd.to_numeric(df[hijos_col], errors="coerce")
+            tiene_hijos = hijos_num.fillna(0) > 0
         else:
-            tiene_hijos = df[hijos_col].map(_is_yes).fillna(False)
+            hijos_num = None
+            tiene_hijos = df[hijos_col].map(_is_yes)
+        tiene_hijos = tiene_hijos.fillna(False)
         total_tiene_hijos = int(tiene_hijos.sum())
 
     # convivencia
     total_conviven = None
+    conviven_bool = None
     if conv_col:
-        conviven = df[conv_col].map(_is_yes).fillna(False)
-        total_conviven = int(conviven.sum())
+        conviven_bool = df[conv_col].map(_is_yes).fillna(False)
+        total_conviven = int(conviven_bool.sum())
 
-    # Relación edad–estado civil (boxplot + resumen)
+    # ---- Relación edad–estado civil (boxplot + resumen)
     fig_box = None
     edad_por_ec = None
     if edad_col:
@@ -344,7 +351,7 @@ def run_familiar(save_md: bool = True) -> dict:
         fig_box = FIG_DIR / "familiar_box_edad_por_estado_civil.png"
         plt.tight_layout(); plt.savefig(fig_box, dpi=120); plt.close()
 
-    # Distribución estado civil
+    # ---- Distribución estado civil
     fig_ec = FIG_DIR / "familiar_estado_civil.png"
     plt.figure(figsize=(10,5))
     df[ec_col].astype(str).str.strip().value_counts().plot(kind="bar", edgecolor="black")
@@ -352,6 +359,63 @@ def run_familiar(save_md: bool = True) -> dict:
     plt.xlabel("Estado Civil"); plt.ylabel("Cantidad")
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout(); plt.savefig(fig_ec, dpi=120); plt.close()
+
+    # =================== NUEVA SECCIÓN ===================
+    # 1) Cruce Estado civil x Género (porcentajes por estado civil)
+    ec_x_genero_md = None
+    fig_ec_genero = None
+    if genero_col:
+        gen_norm = _normalize_text_series(df[genero_col]).replace({"NAN": np.nan})
+        ctab = pd.crosstab(ec_norm, gen_norm, normalize="index") * 100
+        ctab = ctab.round(2)
+        ec_x_genero_md = _df_to_md(ctab.reset_index().rename(columns={ec_col: "Estado civil"}), index=False)
+
+        # barra apilada
+        fig_ec_genero = FIG_DIR / "familiar_estado_civil_por_genero_pct.png"
+        plt.figure(figsize=(11,6))
+        # replot stacked percentages
+        bottom = np.zeros(len(ctab))
+        for col in ctab.columns:
+            plt.bar(ctab.index.astype(str), ctab[col].values, bottom=bottom, edgecolor="black", label=str(col))
+            bottom += ctab[col].values
+        plt.title("Estado civil por género (%)")
+        plt.xlabel("Estado civil"); plt.ylabel("Porcentaje")
+        plt.xticks(rotation=45, ha="right")
+        plt.legend(title="Género", bbox_to_anchor=(1.02, 1), loc="upper left")
+        plt.tight_layout(); plt.savefig(fig_ec_genero, dpi=120); plt.close()
+
+    # 2) Hijos por estado civil: % con hijos y promedio de # hijos
+    hijos_ec_md = None
+    fig_mean_hijos = None
+    if tiene_hijos is not None:
+        tmp = pd.DataFrame({ec_col: ec_norm, "tiene_hijos": tiene_hijos})
+        if hijos_num is not None:
+            tmp["n_hijos"] = hijos_num
+        agg = tmp.groupby(ec_col).agg(pct_con_hijos=("tiene_hijos", lambda s: round(100*s.mean(), 2)))
+        if hijos_num is not None:
+            agg["promedio_hijos"] = tmp.groupby(ec_col)["n_hijos"].mean().round(2)
+        hijos_ec_md = _df_to_md(agg.reset_index().rename(columns={ec_col: "Estado civil"}), index=False)
+
+        if hijos_num is not None:
+            fig_mean_hijos = FIG_DIR / "familiar_promedio_hijos_por_estado_civil.png"
+            plt.figure(figsize=(10,5))
+            tmp.groupby(ec_col)["n_hijos"].mean().sort_values(ascending=False).plot(kind="bar", edgecolor="black")
+            plt.title("Promedio de número de hijos por estado civil")
+            plt.xlabel("Estado civil"); plt.ylabel("Promedio de hijos")
+            plt.xticks(rotation=45, ha="right")
+            plt.tight_layout(); plt.savefig(fig_mean_hijos, dpi=120); plt.close()
+
+    # 3) Convivencia entre quienes tienen hijos (por estado civil)
+    conv_ec_md = None
+    if (conviven_bool is not None) and (tiene_hijos is not None):
+        tmp2 = pd.DataFrame({ec_col: ec_norm, "tiene_hijos": tiene_hijos, "convive": conviven_bool})
+        # considerar sólo quienes tienen hijos
+        sub = tmp2[tmp2["tiene_hijos"]]
+        if not sub.empty:
+            conv_tab = sub.groupby(ec_col)["convive"].mean().mul(100).round(2)
+            conv_ec_md = _df_to_md(conv_tab.rename("Pct convive con familia (entre quienes tienen hijos)")
+                                   .reset_index().rename(columns={ec_col: "Estado civil"}), index=False)
+    # ================= FIN NUEVA SECCIÓN =================
 
     # Reporte
     if save_md:
@@ -382,7 +446,21 @@ def run_familiar(save_md: bool = True) -> dict:
             (f"\n\n![Boxplot edad por estado civil](figs/{fig_box.name})" if fig_box else ""),
             "",
             "## Resumen tabular",
-            (_df_to_md(edad_por_ec) if isinstance(edad_por_ec, pd.DataFrame) else "")
+            (_df_to_md(edad_por_ec) if isinstance(edad_por_ec, pd.DataFrame) else ""),
+            "",
+            "## Nueva sección: Cruces y métricas familiares",
+            "- Esta sección agrega cruces entre **estado civil y género**, así como **indicadores de hijos**.",
+            "",
+            "### Estado civil × Género (porcentaje por estado civil)",
+            (ec_x_genero_md if ec_x_genero_md is not None else "_No se encontró columna de género._"),
+            (f"\n\n![Estado civil por género (%)](figs/{fig_ec_genero.name})" if fig_ec_genero else ""),
+            "",
+            "### Hijos por estado civil",
+            (hijos_ec_md if hijos_ec_md is not None else "_No se pudo calcular (falta columna de hijos)._"),
+            (f"\n\n![Promedio de hijos por estado civil](figs/{fig_mean_hijos.name})" if fig_mean_hijos else ""),
+            "",
+            "### Convivencia (entre quienes tienen hijos)",
+            (conv_ec_md if conv_ec_md is not None else "_No se pudo calcular (faltan columnas de hijos/convivencia)._"),
         ]
         md_path.write_text("\n".join(md), encoding="utf-8")
 
