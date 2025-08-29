@@ -1,5 +1,5 @@
 # Resultados del análisis (FAC - Bienestar Familiar)
-_Última ejecución: 2025-08-29 10:48_
+_Última ejecución: 2025-08-29 10:52_
 
 ## Enlaces a reportes
 - [Calidad de datos](reportes/calidad_datos.md)

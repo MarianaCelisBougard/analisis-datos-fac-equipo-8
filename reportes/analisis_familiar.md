@@ -1,5 +1,5 @@
 # Análisis familiar
-_Actualizado: 2025-08-29 10:48_
+_Actualizado: 2025-08-29 10:52_
 _Fuente de datos: `reportes/datos_limpios.xlsx`_
 
 ## Preguntas y respuestas
