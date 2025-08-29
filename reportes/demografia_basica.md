@@ -1,5 +1,5 @@
 # Demografía básica
-_Actualizado: 2025-08-27 17:36_
+_Actualizado: 2025-08-29 10:30_
 _Fuente de datos: `reportes/datos_limpios.xlsx`_
 
 ## Resumen general
