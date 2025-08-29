@@ -18,7 +18,7 @@ _Actualizado: 2025-08-29 10:52_
 
 
 
-## Datos faltantes después de limpieza
+## Datos faltantes 
 
 ```
                               Columna  Datos_Faltantes  Porcentaje
