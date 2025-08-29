@@ -110,6 +110,6 @@ python datos_exploracion.py --familiar
 Proyecto realizado por:
 
 * **Mariana Celis** (Calidad de Datos y Demografía)
-* **Vanessa Cortés** (Análisis Familiar)
+* **Vanessa Cortés** (Calidad de Datos y Análisis Familiar)
 
 **Grupo 8 – Proyecto Colaborativo: Análisis de Datos FAC - Bienestar Familiar**
