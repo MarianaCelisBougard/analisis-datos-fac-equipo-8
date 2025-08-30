@@ -1,4 +1,4 @@
-# Calidad de Datos (con limpieza aplicada)
+# Calidad de Datos 
 
 _Actualizado: 2025-08-29 10:52_
 
