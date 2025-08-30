@@ -6,7 +6,7 @@ _Actualizado: 2025-08-29 10:52_
 
 ## Limpieza aplicada
 
-- **Nombres de columnas** normalizados (se corrigieron caracteres extraños y espacios).
+- **Nombres de columnas** (se corrigieron caracteres extraños y espacios).
 
 - **Duplicados eliminados:** 0
 
