@@ -56,12 +56,3 @@ Estado civil  pct_con_hijos
 ```
 
 
-### Convivencia (entre quienes tienen hijos)
-```
-Estado civil  Pct convive con familia (entre quienes tienen hijos)
-      CASADO                                                 12.34
-  DIVORCIADO                                                 21.13
-    SEPARADO                                                 26.76
-   SOLTERO/A                                                 31.37
-     VIUDO/A                                                 13.89
-```
